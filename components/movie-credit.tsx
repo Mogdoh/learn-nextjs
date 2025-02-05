@@ -18,6 +18,8 @@ export default async function MovieCredit({ id }: { id: string }) {
     const departmentMap = {
         Acting: "배우",
         Directing: "감독",
+        Crew: "영화제작",
+        ["Visual Effects"]: "VFX 디자이너",
     };
 
     return (
@@ -44,7 +46,8 @@ export default async function MovieCredit({ id }: { id: string }) {
                                 <p className={styles.name}>{member.name}</p>
                                 <p className={styles.character}>{member.character}</p>
                                 <p className={styles.deartment}>
-                                    {departmentMap[member.known_for_department] || member.known_for_department}
+                                    {departmentMap[member.known_for_department] ||
+                                        member.known_for_department}
                                 </p>
                             </div>
                         </li>

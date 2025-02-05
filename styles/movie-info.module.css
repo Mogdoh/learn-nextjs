@@ -5,7 +5,9 @@
     width: 80%;
     margin: 0 auto;
 }
-
+.container::-webkit-scrollbar {
+    display: none;
+}
 .poster {
     border-radius: 20px;
     max-width: 70%;

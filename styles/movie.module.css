@@ -24,3 +24,7 @@
 .movie a {
     text-align: center;
 }
+
+.movie::-webkit-scrollbar {
+    display: none;
+}
