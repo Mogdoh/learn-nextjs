@@ -6,8 +6,10 @@ import MovieCredit from "../../../../components/movie-credit";
 import MovieProviders from "../../../../components/movie-provider";
 import { title } from "process";
 
-interface IParams {
-    params: { id: string };
+interface Props {
+    params: {
+        id: string;
+    };
 }
 
 async function getMovie(id: string) {
@@ -15,28 +17,32 @@ async function getMovie(id: string) {
     return response.json();
 }
 
-export async function generateMetadata({ params: { id } }: IParams) {
-    const movie = await getMovie(id);
-    return {
-        title: movie.title,
-    };
-}
+export default async function MovieDetail({ params }: Props) {
+    const resolvedParams = await params;
+    const movieId = resolvedParams.id;
 
-export default async function MovieDetail({ params: { id } }: { params: { id: string } }) {
     return (
         <div>
             <Suspense fallback={<h1>Loading movie info</h1>}>
-                <MovieInfo id={id} />
+                <MovieInfo id={movieId} />
             </Suspense>
-            <Suspense fallback={<h1>Loading movie vieods</h1>}>
-                <MovieVideos id={id} />
+            <Suspense fallback={<h1>Loading movie videos</h1>}>
+                <MovieVideos id={movieId} />
             </Suspense>
             <Suspense fallback={<h1>Loading movie credit</h1>}>
-                <MovieCredit id={id} />
+                <MovieCredit id={movieId} />
             </Suspense>
-            <Suspense fallback={<h1>Loading movie provides</h1>}>
-                <MovieProviders id={id} />
+            <Suspense fallback={<h1>Loading movie providers</h1>}>
+                <MovieProviders id={movieId} />
             </Suspense>
         </div>
     );
+}
+
+export async function generateMetadata({ params }: Props) {
+    const resolvedParams = await params;
+    const movie = await getMovie(resolvedParams.id);
+    return {
+        title: movie.title,
+    };
 }
