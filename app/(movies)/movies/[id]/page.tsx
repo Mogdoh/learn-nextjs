@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { API_URL } from "../../../(home)/page";
 import MovieInfo from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
 import MovieCredit from "../../../../components/movie-credit";
 import MovieProviders from "../../../../components/movie-provider";
 import { title } from "process";
+import { API_URL } from "../../../constants";
 
 interface Props {
     params: {

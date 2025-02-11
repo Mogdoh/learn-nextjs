@@ -1,5 +1,5 @@
+import { API_URL } from "../app/constants";
 import styles from "../styles/movie-credit.module.css";
-import { API_URL } from "../app/(home)/page";
 
 interface CreditMember {
     id: number;
