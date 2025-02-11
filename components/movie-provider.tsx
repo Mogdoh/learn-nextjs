@@ -25,11 +25,6 @@ async function getProviders(id: string) {
 export default async function MovieProvider({ id }: { id: string }) {
     const data: ProviderResponse = await getProviders(id);
     const krData = data.KR;
-
-    console.log("Flatrate:", krData?.flatrate);
-    console.log("Rent:", krData?.rent);
-    console.log("Buy:", krData?.buy);
-
     if (!krData) {
         return <div>현재 이용 가능한 스트리밍 서비스가 없습니다.</div>;
     }

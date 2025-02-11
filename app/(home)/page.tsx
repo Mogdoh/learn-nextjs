@@ -6,6 +6,12 @@ export const metadata = {
     title: "Home",
 };
 
+interface MovieType {
+    id: number;
+    poster_path: string;
+    title: string;
+}
+
 async function getMovies() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await fetch(API_URL);
